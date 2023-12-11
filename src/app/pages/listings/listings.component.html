@@ -1,0 +1,11 @@
+<app-header ></app-header>
+<div class="container">
+  <div class="w-100">
+    <h3>Viewing all listings</h3>
+    <div class="row mt-5">
+      <div *ngFor="let listing of listings" class="col-md-4 mb-4">
+        <app-listing-item [listing]="listing"></app-listing-item>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.auth-inner {
+  max-width: 600px;
+  margin-inline: auto;
+}
+.main {
+  min-height: 80vh;
+}
+.h-40 {
+  height: 50px;
+}
+

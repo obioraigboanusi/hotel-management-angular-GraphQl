@@ -1,0 +1,155 @@
+<app-header></app-header>
+<div class="container">
+  <div class="auth-inner w-100 mt-5">
+    <h2>Register With Us</h2>
+    <p>Please signup to enable the full use of this app</p>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div class="row">
+        <div class="mb-3 col-12">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control h-40"
+            formControlName="username"
+            id="username"
+          />
+          <span
+            *ngIf="submitted && signupForm.hasError('required', 'username')"
+            class="text-danger small mt-1"
+            >Username is required</span
+          >
+          <span
+            *ngIf="submitted && signupForm.hasError('minlength', 'username')"
+            class="text-danger small mt-1"
+            >Username must be 4 characters at least</span
+          >
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="firstname" class="form-label">First name</label>
+          <input
+            type="text"
+            class="form-control h-40"
+            formControlName="firstname"
+            id="firstname"
+          />
+          <span
+            *ngIf="submitted && signupForm.hasError('required', 'firstname')"
+            class="text-danger small mt-1"
+            >First name is required</span
+          >
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="lastname" class="form-label">Last name</label>
+          <input
+            type="text"
+            class="form-control h-40"
+            formControlName="lastname"
+            id="lastname"
+          />
+          <span
+            *ngIf="submitted && signupForm.hasError('required', 'lastname')"
+            class="text-danger small mt-1"
+            >Last name is required</span
+          >
+        </div>
+        <div class="mb-3 col-12">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control h-40"
+            formControlName="email"
+            id="email"
+          />
+          <span
+            *ngIf="submitted && signupForm.hasError('required', 'email')"
+            class="text-danger small mt-1"
+            >Email is required</span
+          >
+          <span
+            *ngIf="submitted && signupForm.hasError('email', 'email')"
+            class="text-danger small mt-1"
+            >Enter a valid email</span
+          >
+        </div>
+        <div class="mb-3 col-12">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control h-40"
+            formControlName="password"
+            id="password"
+          />
+          <div class="text-danger small mt-1">
+            <span
+              *ngIf="submitted && signupForm.hasError('required', 'password')"
+              >Password is required</span
+            >
+          </div>
+          <div *ngIf="submitted && signupForm.hasError('pattern', 'password')">
+            <span class="small">Password must contain</span>
+            <ul class="text-danger mt-0 small mt-1">
+              <li>At least 6 characters</li>
+              <li>Upper/lower alphabets</li>
+              <li>Numbers 0-9</li>
+              <li>Special characters #, $, &, _</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mb-3 col-12">
+          <label for="verify-password" class="form-label"
+            >Comfirm password</label
+          >
+          <input
+            type="password"
+            class="form-control h-40"
+            formControlName="verifyPassword"
+            id="verify-password"
+          />
+          <span
+            *ngIf="
+              submitted && signupForm.hasError('required', 'verifyPassword')
+            "
+            class="text-danger small mt-1"
+            >You need to confirm your password</span
+          >
+          <span
+            *ngIf="
+              submitted &&
+              signupForm.value.verifyPassword !== signupForm.value.password
+            "
+            class="text-danger small mt-1"
+            >Password does not match</span
+          >
+        </div>
+        <div class="mb-3 col-12">
+          <div class="form-check">
+            <input
+              type="checkbox"
+              formControlName="isAdmin"
+              class="form-check-input"
+              id="isAdmin"
+            />
+            <label class="form-check-label" for="isAdmin"
+              >Sign up as an admin?</label
+            >
+            <span
+              *ngIf="submitted && signupForm.hasError('required', 'isAdmin')"
+              class="text-danger small mt-1 d-block"
+              >This is required</span
+            >
+          </div>
+        </div>
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary w-100 h-40">
+            Create Account
+          </button>
+        </div>
+        <div class="col-12">
+          <div class="pt-4">
+            <p>Already have account? <a routerLink="/login">Log in</a></p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

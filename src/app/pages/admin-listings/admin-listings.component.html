@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="container">
+  <h2 class="mb-5 text-capitalize">{{ firstname }}'s listings</h2>
+  <div class="w-100">
+    <div class="row">
+      <div *ngFor="let listing of listings" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body p-4">
+            <h5 class="card-title">{{ listing?.listing_title }}</h5>
+            <p class="card-text">
+              {{ listing.description }}
+            </p>
+            <div class="card-text">
+              <ul>
+                <li>
+                  <span>Address: {{ listing.street }}</span>
+                </li>
+                <li>
+                  <span>City: {{ listing.city }}</span>
+                </li>
+                <li>
+                  <span>Postal code: {{ listing.postal_code }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

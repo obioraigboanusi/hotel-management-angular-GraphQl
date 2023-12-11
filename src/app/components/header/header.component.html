@@ -1,0 +1,38 @@
+<header>
+  <nav class="container py-3 d-flex justify-content-between align-items-center">
+    <div>
+      <h1 class="m-0">Hotels</h1>
+    </div>
+
+    <div class="d-flex">
+      <div class="nav">
+        <a class="nav-link text-dark" routerLink="/search-listing"> Search</a>
+        <a class="nav-link text-dark" routerLink="/"> Listings </a>
+        <a
+          *ngIf="isLoggedIn && authedUser.type === 'user'"
+          class="nav-link text-dark"
+          routerLink="/bookings"
+        >
+         My Bookings
+        </a>
+      </div>
+      <div class="nav" *ngIf="isLoggedIn && authedUser.type === 'admin'">
+        <a class="nav-link text-dark" routerLink="/admin-listings"
+          >My Listings
+        </a>
+        <a class="nav-link text-dark" routerLink="/add-listing">
+          Add Listing
+        </a>
+      </div>
+      <div class="ms-3" *ngIf="!isLoggedIn">
+        <a class="btn btn-outline-dark me-3" routerLink="/login"> Log in </a>
+        <a class="btn btn-primary" routerLink="/signup"> Sign up </a>
+      </div>
+      <div *ngIf="isLoggedIn">
+        <button class="btn btn-outline-danger" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,24 @@
+<app-header ></app-header>
+<div class="container">
+  <div class="w-100">
+    <h3>My Bookings</h3>
+    <table class="table table-striped table-hover mt-5">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Booking Date</th>
+          <th scope="col">Booking Start</th>
+          <th scope="col">Booking End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <th scope="row">{{ booking._id }}</th>
+          <td>{{ booking.booking_date }}</td>
+          <td>{{ booking.booking_start }}</td>
+          <td>{{ booking.booking_end }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

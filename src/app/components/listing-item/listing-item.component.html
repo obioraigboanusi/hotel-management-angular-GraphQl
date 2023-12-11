@@ -1,0 +1,103 @@
+<div class="card">
+  <div class="card-body p-4">
+    <h5 class="card-title text-capitalize">
+      {{ listing?.listing_title | lowercase }}
+    </h5>
+    <p class="card-text">
+      {{ listing.description }}
+    </p>
+    <div class="card-text">
+      <ul>
+        <li>
+          <span>Address: {{ listing.street }}</span>
+        </li>
+        <li>
+          <span>City: {{ listing.city }}</span>
+        </li>
+        <li>
+          <span>Postal code: {{ listing.postal_code }}</span>
+        </li>
+      </ul>
+    </div>
+    <button
+      *ngIf="isUserType"
+      class="btn btn-primary mt-3 py-2 px-3"
+      (click)="open(content)"
+    >
+      Book
+    </button>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Book Listing</h4>
+
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <h5 class="mb-0 text-capitalize">{{ listing.listing_title }}</h5>
+      <p class="mb-1">{{ listing.description }}</p>
+      <p class="mb-1 fw-bold">{{ listing.price | currency }}</p>
+    </div>
+    <form
+      [formGroup]="bookingForm"
+      (ngSubmit)="bookingHandler(listing._id, modal)"
+    >
+      <div class="mb-3">
+        <label for=" booking_start">Booking start date</label>
+        <div class="input-group">
+          <input
+            id=" booking_start"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            formControlName="booking_start"
+            ngbDatepicker
+            #booking_start="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="booking_start.toggle()"
+            type="button"
+          ></button>
+        </div>
+        <span
+          *ngIf="submitted && bookingForm.hasError('required', 'booking_start')"
+          class="text-danger small mt-1"
+          >Booking start date is required</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="booking_end">Booking end date</label>
+        <div class="input-group">
+          <input
+            id="booking_end"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            formControlName="booking_end"
+            ngbDatepicker
+            #booking_end="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="booking_end.toggle()"
+            type="button"
+          ></button>
+        </div>
+        <span
+          *ngIf="submitted && bookingForm.hasError('required', 'booking_end')"
+          class="text-danger small mt-1"
+          >Booking end date is required</span
+        >
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-primary">Book now</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

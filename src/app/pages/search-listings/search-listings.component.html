@@ -1,0 +1,48 @@
+<app-header ></app-header>
+<div class="container">
+  <div class="w-100">
+    <h3>Search Listings</h3>
+    <p>Search by:</p>
+    <form [formGroup]="searchForm" (ngSubmit)="searchListing()">
+      <div class="d-flex align-items-end">
+        <div class="mb-3 me-3">
+          <label for="listing_title" class="form-label">Title</label>
+          <input
+            formControlName="listing_title"
+            type="text"
+            class="form-control h-40"
+            id="listing_title"
+          />
+        </div>
+        <div class="mb-3 me-3">
+          <label for="city" class="form-label">City</label>
+          <input
+            formControlName="city"
+            type="text"
+            class="form-control h-40"
+            id="city"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="postal_code" class="form-label">Postal code</label>
+          <input
+            formControlName="postal_code"
+            type="text"
+            class="form-control h-40"
+            id="postal_code"
+          />
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary btn-lg h-40 ms-3">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div *ngFor="let listing of listings" class="col-md-4 mb-4">
+        <app-listing-item [listing]="listing"></app-listing-item>
+      </div>
+    </div>
+  </div>
+</div>
