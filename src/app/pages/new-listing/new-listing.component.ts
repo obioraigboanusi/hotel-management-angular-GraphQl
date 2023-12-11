@@ -42,7 +42,6 @@ const ADD_LISTING = gql`
   templateUrl: './new-listing.component.html',
   styleUrls: ['./new-listing.component.css'],
 })
-
 export class NewListingComponent implements OnInit {
   addListingForm: FormGroup;
   submited: boolean = false;
@@ -74,10 +73,10 @@ export class NewListingComponent implements OnInit {
           variables: { ...this.addListingForm.value, username: user.username },
         })
         .subscribe({
-          next: ({ data, loading }) => {
+          next: () => {
             this.addListingForm.reset();
           },
-          error: (error: any) => console.log(error),
+          // error: (error: any) => console.log(error),
         });
     }
   }

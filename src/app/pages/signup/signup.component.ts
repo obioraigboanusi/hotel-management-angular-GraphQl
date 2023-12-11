@@ -88,7 +88,7 @@ export class SignupComponent implements OnInit {
             variables: payload,
           })
           .subscribe({
-            next: ({ data, loading }) => {
+            next: ({ data }:any) => {
               let res = data as any;
               if (res.addUser.status === 'success') {
                 this.signupForm.reset();
@@ -97,7 +97,7 @@ export class SignupComponent implements OnInit {
                 alert('Something went wrong!');
               }
             },
-            error: (error: any) => console.log(error),
+            // error: (error: any) => console.log(error),
           });
       } else {
         alert('Password does not match!');

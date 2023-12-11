@@ -36,7 +36,6 @@ export class BookingsComponent implements OnInit {
         },
       })
       .valueChanges.subscribe(({ data, loading }) => {
-        console.log(loading);
         this.bookings = data.bookingsByUser;
       });
   }

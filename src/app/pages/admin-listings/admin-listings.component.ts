@@ -42,7 +42,6 @@ export class AdminListingsComponent implements OnInit {
           },
         })
         .valueChanges.subscribe(({ data, loading }) => {
-          // console.log(loading);
           this.listings = data.listingsAddedByAdmin;
         });
     }
